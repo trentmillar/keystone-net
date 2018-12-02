@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Keystone.Abstractions\Keystone.Abstractions.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Reference Include="JetBrains.Annotations, Version=2018.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325">
+        <HintPath>..\..\..\..\..\.nuget\packages\jetbrains.annotations\2018.2.1\lib\netstandard2.0\JetBrains.Annotations.dll</HintPath>
+      </Reference>
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AspNet.Security.OpenIdConnect.Server" Version="2.0.0" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.1.2" />
+      <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="2.1.2" />
+      <PackageReference Include="Microsoft.Extensions.Logging" Version="2.1.1" />
+    </ItemGroup>
+
+</Project>
