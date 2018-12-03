@@ -34,6 +34,12 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.AddMemoryCache();
             builder.Services.AddOptions();
 
+
+            builder.Services.Configure<Keystone.Core.Configuration.KeystoneCoreOptions>(options =>
+            {
+                options.Environment = "Dev";
+            });
+
             /*builder.Services.TryAddScoped(typeof(KeystoneApplicationManager<>));
             builder.Services.TryAddScoped(typeof(KeystoneAuthorizationManager<>));
             builder.Services.TryAddScoped(typeof(KeystoneScopeManager<>));
@@ -117,7 +123,7 @@ namespace Microsoft.Extensions.DependencyInjection
                     typeof(KeystoneTokenManager<>).MakeGenericType(options.DefaultTokenType));
             });*/
 
-            return new KeystoneCoreBuilder(builder.Services);
+            return new KeystoneCoreBuilder(builder.Services).Configure(options => options.DisableAdditionalFiltering = false);
         }
 
         /// <summary>

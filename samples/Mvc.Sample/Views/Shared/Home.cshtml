@@ -1,0 +1,25 @@
+﻿@model HomeViewModel
+@using Keystone.Core.Configuration
+@using Microsoft.Extensions.Options
+@using Mvc.Sample.Models
+@inject IOptions<KeystoneCoreOptions> OptionsAccessor
+
+<div class="jumbotron">
+        <h1>Keystone Sample</h1>
+      
+        <div class="row">
+            <div class="col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Keystone Options</h3>
+                    </div>
+                    <div class="panel-body">
+                        <p>
+                            <b>@@OptionsAccessor.Value.Environment:</b> 
+                            @OptionsAccessor.Value.Environment
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>

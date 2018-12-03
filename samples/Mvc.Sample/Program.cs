@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -21,7 +22,9 @@ namespace Mvc.Sample
             WebHost.CreateDefaultBuilder(args)
                 .ConfigureAppConfiguration(builder =>
                 {
-                    builder.Add()
+                    Debugger.Break();
+                    builder.AddJsonFile("appsettings.json", reloadOnChange: true, optional: false);
+                    builder.AddEnvironmentVariables();
                 })
                 .UseStartup<Startup>();
     }
