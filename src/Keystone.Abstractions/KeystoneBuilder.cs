@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel;
 using JetBrains.Annotations;
+// ReSharper disable All
 
 namespace Microsoft.Extensions.DependencyInjection
 {
