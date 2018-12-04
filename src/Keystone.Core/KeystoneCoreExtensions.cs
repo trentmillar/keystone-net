@@ -5,6 +5,8 @@
  */
 
 using System;
+using System.Linq;
+using System.Reflection;
 using System.Text;
 using JetBrains.Annotations;
 using Microsoft.Extensions.DependencyInjection.Extensions;
@@ -34,11 +36,22 @@ namespace Microsoft.Extensions.DependencyInjection
             builder.Services.AddMemoryCache();
             builder.Services.AddOptions();
 
-
-            builder.Services.Configure<Keystone.Core.Configuration.KeystoneCoreOptions>(options =>
+            // Add Keystone Settings
+            /*builder.Services.Configure<Keystone.Core.Configuration.KeystoneCoreOptions>(options =>
             {
+                options.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public).ToList().ForEach(pi =>
+                {
+                    if (builder.Configuration[pi.Name] != null)
+                    {
+                        pi.SetValue(options, builder.Configuration[pi.Name]);
+                    }
+                });
                 options.Environment = "Dev";
-            });
+            });*/
+            
+            // Map Config settings in appsettings to KeystoneCoreOptions
+            builder.Services.Configure<Keystone.Core.Configuration.KeystoneCoreOptions>(
+                builder.Configuration.GetSection("Keystone"));
 
             /*builder.Services.TryAddScoped(typeof(KeystoneApplicationManager<>));
             builder.Services.TryAddScoped(typeof(KeystoneAuthorizationManager<>));

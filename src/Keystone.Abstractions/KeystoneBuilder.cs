@@ -1,6 +1,8 @@
 using System;
 using System.ComponentModel;
 using JetBrains.Annotations;
+using Microsoft.Extensions.Configuration;
+
 // ReSharper disable All
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -14,7 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// Initializes a new instance of <see cref="KeystoneBuilder"/>.
         /// </summary>
         /// <param name="services">The services collection.</param>
-        public KeystoneBuilder([NotNull] IServiceCollection services)
+        public KeystoneBuilder([NotNull] IServiceCollection services, [NotNull] IConfiguration configuration)
         {
             if (services == null)
             {
@@ -22,6 +24,7 @@ namespace Microsoft.Extensions.DependencyInjection
             }
 
             Services = services;
+            Configuration = configuration;
         }
 
         /// <summary>
@@ -29,6 +32,12 @@ namespace Microsoft.Extensions.DependencyInjection
         /// </summary>
         [EditorBrowsable(EditorBrowsableState.Never)]
         public IServiceCollection Services { get; }
+
+        /// <summary>
+        /// Gets the configuration .
+        /// </summary>
+        [EditorBrowsable(EditorBrowsableState.Never)]
+        public IConfiguration Configuration { get; }
 
         /// <summary>
         /// Determines whether the specified object is equal to the current object.

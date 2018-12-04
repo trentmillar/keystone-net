@@ -16,12 +16,7 @@ namespace Microsoft.Extensions.DependencyInjection
         /// <param name="services">The services collection.</param>
         public KeystoneCoreBuilder([NotNull] IServiceCollection services)
         {
-            if (services == null)
-            {
-                throw new ArgumentNullException(nameof(services));
-            }
-
-            Services = services;
+            Services = services ?? throw new ArgumentNullException(nameof(services));
         }
 
         /// <summary>

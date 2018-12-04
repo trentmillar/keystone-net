@@ -22,7 +22,7 @@ namespace Mvc.Sample
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
-            var builder = services.AddKeystone();
+            var builder = services.AddKeystone(Configuration);
             builder = builder.AddCore(options =>
             {
                 Console.WriteLine("AddCore");
@@ -43,7 +43,6 @@ namespace Mvc.Sample
 
             app.UseStaticFiles();
             app.UseMvc();
-            //app.Run(async (context) => { await context.Response.WriteAsync("Hello World!"); });
         }
     }
 }

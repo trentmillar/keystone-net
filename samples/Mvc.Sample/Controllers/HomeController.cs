@@ -17,7 +17,7 @@ namespace Mvc.Sample.Controllers
     public class HomeController : Controller
     {
         [HttpGet("~/")]
-        public ActionResult Index([FromServices] IOptions<KeystoneCoreOptions> options)
+        public ActionResult Index([FromServices] IOptionsSnapshot<KeystoneCoreOptions> options)
         {
             ViewData["Environment"] = options.Value.Environment;
             var model = new HomeViewModel {Environment = options.Value.Environment};

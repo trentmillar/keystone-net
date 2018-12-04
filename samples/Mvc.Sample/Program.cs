@@ -20,11 +20,15 @@ namespace Mvc.Sample
 
         private static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .ConfigureAppConfiguration(builder =>
+                .ConfigureAppConfiguration((context, config) =>
                 {
                     Debugger.Break();
-                    builder.AddJsonFile("appsettings.json", reloadOnChange: true, optional: false);
-                    builder.AddEnvironmentVariables();
+                    var env = context.HostingEnvironment.EnvironmentName;
+                    config.AddJsonFile("appsettings.json",
+                            reloadOnChange: true, optional: false)
+                        .AddJsonFile($"appsettings.{env}.json",
+                            reloadOnChange: true, optional: true)
+                        .AddEnvironmentVariables();
                 })
                 .UseStartup<Startup>();
     }
