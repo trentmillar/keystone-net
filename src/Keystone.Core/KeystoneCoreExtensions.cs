@@ -9,6 +9,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using JetBrains.Annotations;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using Microsoft.Extensions.Options;
 
@@ -51,7 +52,7 @@ namespace Microsoft.Extensions.DependencyInjection
             
             // Map Config settings in appsettings to KeystoneCoreOptions
             builder.Services.Configure<Keystone.Core.Configuration.KeystoneCoreOptions>(
-                builder.Configuration.GetSection("Keystone"));
+                (IConfiguration) builder.Configuration.GetSection("Keystone"));
 
             /*builder.Services.TryAddScoped(typeof(KeystoneApplicationManager<>));
             builder.Services.TryAddScoped(typeof(KeystoneAuthorizationManager<>));

@@ -1,16 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
     <PropertyGroup>
-        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <TargetFramework>netcoreapp2.2</TargetFramework>
         <LangVersion>7.1</LangVersion>
     </PropertyGroup>
 
     <ItemGroup>
       <Reference Include="JetBrains.Annotations, Version=2018.2.1.0, Culture=neutral, PublicKeyToken=1010a0d8d6380325">
         <HintPath>..\..\..\..\..\.nuget\packages\jetbrains.annotations\2018.2.1\lib\netstandard2.0\JetBrains.Annotations.dll</HintPath>
-      </Reference>
-      <Reference Include="Microsoft.Extensions.Configuration.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
-        <HintPath>..\..\..\..\..\.nuget\packages\microsoft.extensions.configuration.abstractions\2.0.0\lib\netstandard2.0\Microsoft.Extensions.Configuration.Abstractions.dll</HintPath>
       </Reference>
       <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60">
         <HintPath>..\..\..\..\..\.nuget\packages\microsoft.extensions.dependencyinjection.abstractions\2.0.0\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
@@ -22,6 +19,7 @@
 
     <ItemGroup>
       <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" />
+      <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="2.2.0" />
     </ItemGroup>
 
 </Project>
