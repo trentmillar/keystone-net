@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Protocols.OpenIdConnect;
-using Mvc.Sample.Models;
 
 namespace Mvc.Sample.Controllers
 {
@@ -20,8 +19,7 @@ namespace Mvc.Sample.Controllers
         public ActionResult Index([FromServices] IOptionsSnapshot<KeystoneCoreOptions> options)
         {
             ViewData["Environment"] = options.Value.Environment;
-            var model = new HomeViewModel {Environment = options.Value.Environment};
-            return View("Home", model);
+            return View("Home");
         }
 
     }
