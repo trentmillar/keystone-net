@@ -4,6 +4,7 @@ using System.Net.Http.Headers;
 using System.Threading;
 using System.Threading.Tasks;
 using Keystone.Core.Configuration;
+using Keystone.Extensions;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
@@ -18,6 +19,7 @@ namespace Mvc.Sample.Controllers
         [HttpGet("~/")]
         public ActionResult Index([FromServices] IOptionsSnapshot<KeystoneCoreOptions> options)
         {
+           
             ViewData["Environment"] = options.Value.Environment;
             return View("Home");
         }

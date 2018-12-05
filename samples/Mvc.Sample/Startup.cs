@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using Keystone.Extensions;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -40,6 +41,12 @@ namespace Mvc.Sample
             {
                 app.UseDeveloperExceptionPage();
             }
+            
+            app.Use( (context, next) =>
+            {
+                 context.ApiResponse(new {my = "JSON", response = "Object"});
+                return next();
+            });
 
             app.UseStaticFiles();
             app.UseMvc();

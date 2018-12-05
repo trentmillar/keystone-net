@@ -9,8 +9,11 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using JetBrains.Annotations;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection.Extensions;
+using Microsoft.Extensions.DependencyInjection.Filters;
 using Microsoft.Extensions.Options;
 
 namespace Microsoft.Extensions.DependencyInjection
@@ -53,6 +56,8 @@ namespace Microsoft.Extensions.DependencyInjection
             // Map Config settings in appsettings to KeystoneCoreOptions
             builder.Services.Configure<Keystone.Core.Configuration.KeystoneCoreOptions>(
                 (IConfiguration) builder.Configuration.GetSection("Keystone"));
+        
+            builder.Services.AddSingleton<IStartupFilter, KeystoneRequestRouterFilter>();
 
             /*builder.Services.TryAddScoped(typeof(KeystoneApplicationManager<>));
             builder.Services.TryAddScoped(typeof(KeystoneAuthorizationManager<>));
